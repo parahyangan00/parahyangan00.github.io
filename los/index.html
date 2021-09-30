@@ -24,18 +24,18 @@
                         <strong>Berhasil!</strong> Hore......
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                    <form action="" name="cash">
+                    <form action="" name="los-angsuran-pasirwangi">
                         <div class="inputBox">
                             <label for="">Tanggal</label>
-                            <input type="date" name="tpelayanan">
+                            <input type="date" name="tanggal">
                         </div>
                         <div class="inputBox1">
                             <label for="">Nama Anggota</label>
-                            <input type="text" name="nmajelis" id="majelis" required>
+                            <input type="text" name="namaAnggota" id="majelis" required>
                         </div>
                         <div class="inputBox1">
                             <label for="">Majelis</label>
-                            <input type="text" name="nmajelis" id="majelis" required>
+                            <input type="text" name="namaMajelis" id="majelis" required>
                         </div>
                         <div class="inputBox">
                             <label for="">Alasan tidak bayar</label>
@@ -51,10 +51,50 @@
                         <div class="inputBox">
                             <label for="">Alasan lainnya / perjanjian</label>
                             <textarea name="alasan2" id="alasan2">
-
                             </textarea>
                         </div>
-                        <h6 class="text-center mt-4">Pasirwangi</h6>
+                        <div>
+                            <button class="btn-kirim" type="submit">Simpan</button>
+                            <button class="btn-loading d-none" type="button" disabled>
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+
+                            </button>
+                        </div>
+                    </form>
+                    <h6 class="text-center mt-4">Pasirwangi</h6>
+
+                    <!-- batas koding -->
+                    <script>
+                        const scriptURL =
+                            'https://script.google.com/macros/s/AKfycbwF-9HQnrUzvZ-4ki0XoMzuopztqUBUvFHsMyWEBp1e4UQQM9fhzzj4h0lpFD8nNJTD/exec'
+                        const form = document.forms['los-angsuran-pasirwangi'];
+                        const btnKirim = document.querySelector('.btn-kirim');
+                        const btnLoading = document.querySelector('.btn-loading');
+                        const myAlert = document.querySelector('.my-alert');
+
+                        form.addEventListener('submit', e => {
+                            e.preventDefault();
+                            // ketika tombol submit diklik
+                            // tampilkan tombol loading, hilangkan tombol kirim
+                            btnLoading.classList.toggle('d-none');
+                            btnKirim.classList.toggle('d-none');
+                            fetch(scriptURL, {
+                                    method: 'POST',
+                                    body: new FormData(form)
+                                })
+                                .then((response) => {
+                                    // tampilkan tombol kirim, hilangkan tombol loading
+                                    btnLoading.classList.toggle('d-none');
+                                    btnKirim.classList.toggle('d-none');
+                                    // tampilkan alert
+                                    myAlert.classList.toggle('d-none');
+                                    // reset formnya
+                                    form.reset();
+                                    console.log('Success!', response);
+                                })
+                                .catch((error) => console.error('Error!', error.message));
+                        });
+                    </script>
 </body>
 
 </html>

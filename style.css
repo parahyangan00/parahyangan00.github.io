@@ -99,6 +99,17 @@ button {
     background-color: #f9b4e0;
 }
 
+.btn.c7 {
+    width: 240px;
+    height: 50px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #2b546a;
+    text-align: center;
+    margin: 10px;
+    background-color: #ecee7ff3;
+}
+
 button .btn {
     color: #ffffff;
 }
@@ -128,4 +139,8 @@ h3 {
     text-decoration: none;
     color: #5876a3;
     font-size: 10px;
+}
+
+h6 {
+    font-size: 12px;
 }

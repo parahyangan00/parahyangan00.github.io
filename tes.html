@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Debugging HTML</title>
+</head>
+<style>
+    body {
+        margin: 20px;
+    }
+</style>
+
+<body>
+    <form>
+        <div class="mb-3">
+            <label for="inputteks" class="form-label">Input</label>
+            <input type="email" class="form-control" id="inputteks">
+        </div>
+        <button type=" submit" class="btn btn-primary btn-kirim">kirim</button>
+    </form>
+    <div class="container">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima, illum.</p>
+        <ul>
+            <li id="li1"></li>
+        </ul>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+<script>
+    const inputTeks = document.getElementById('inputteks');
+    const btnKirim = document.querySelector('.btn-kirim');
+    const li = document.getElementById('li1');
+
+    btnKirim.addEventListener('click', function () {
+        li.appendChild(inputTeks);
+    });
+</script>
+
+</html>

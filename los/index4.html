@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="style2.css">
-    <title>Cashflow cabang cikajang</title>
+    <title>Losangsuran cabang sukaraja</title>
 </head>
 
 <body>
@@ -24,18 +24,18 @@
                         <strong>Berhasil!</strong> Hore......
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                    <form action="" name="cash">
+                    <form action="" name="los-angsuran-sukaraja">
                         <div class="inputBox">
                             <label for="">Tanggal</label>
-                            <input type="date" name="tpelayanan">
+                            <input type="date" name="tanggal">
                         </div>
                         <div class="inputBox1">
                             <label for="">Nama Anggota</label>
-                            <input type="text" name="nmajelis" id="majelis" required>
+                            <input type="text" name="namaAnggota" id="majelis" required>
                         </div>
                         <div class="inputBox1">
                             <label for="">Majelis</label>
-                            <input type="text" name="nmajelis" id="majelis" required>
+                            <input type="text" name="namaMajelis" id="majelis" required>
                         </div>
                         <div class="inputBox">
                             <label for="">Alasan tidak bayar</label>
@@ -51,25 +51,22 @@
                         <div class="inputBox">
                             <label for="">Alasan lainnya / perjanjian</label>
                             <textarea name="alasan2" id="alasan2">
-
                             </textarea>
                         </div>
-                        <h6 class="text-center mt-4">Sukaraja</h6>
                         <div>
                             <button class="btn-kirim" type="submit">Simpan</button>
                             <button class="btn-loading d-none" type="button" disabled>
                                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-
                             </button>
                         </div>
                     </form>
-                    <h6 class="text-center mt-4">Pasirwangi</h6>
+                    <h6 class="text-center mt-4">Sukaraja</h6>
 
                     <!-- batas koding -->
                     <script>
                         const scriptURL =
-                            ''
-                        const form = document.forms['los-angsuran-'];
+                            'https://script.google.com/macros/s/AKfycbzOW3W_PTPDYoJfoTM8Vl5QtZF8pqqKyI-EkbFMs-F6UDEddTqhv5xlbf9gJqxTeoBG/exec'
+                        const form = document.forms['los-angsuran-sukaraja'];
                         const btnKirim = document.querySelector('.btn-kirim');
                         const btnLoading = document.querySelector('.btn-loading');
                         const myAlert = document.querySelector('.my-alert');
@@ -89,7 +86,8 @@
                                     btnLoading.classList.toggle('d-none');
                                     btnKirim.classList.toggle('d-none');
                                     // tampilkan alert
-                                    myAlert.classList.toggle('d-none');
+                                    // myAlert.classList.toggle('d-none');
+                                    alert('data berhasil di input');
                                     // reset formnya
                                     form.reset();
                                     console.log('Success!', response);

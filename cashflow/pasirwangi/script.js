@@ -69,13 +69,14 @@ function hitungSaldo(){
     var tabunganSukarelaOut = $('input[name="pensukarela"]').val();
     var tabunganBerencanaOut = $('input[name="penberencana"]').val();
     var pengunduranDiriRp = $('input[name="pengundurandiri"]').val();
+    var tamsulpf = $('input[name="tspf"]').val();
+    var taberpf = $('input[name="rtpf"]').val();
     
     // Sekedar tambahan logika untuk menggantian variabel saldo sebelumnya (sudah dikomentari dibawah ini)
     // var saldo = Number(kasAwal) + Number(totalAngsuran) + Number(tabunganSukarelaIn) + 
     // Number(tabunganBerencanaIn) + Number(simpananWajib) + Number(infaq) + Number(kartuAngsuran) + 
     // Number(bukuTabungan) + Number(tambalSulam) + Number(totalAdmin) + Number(asuransi) - Number(dropingRp) - 
     // Number(tabunganSukarelaOut) - Number(tabunganBerencanaOut) - Number(pengunduranDiriRp);
-
     // Ambil semua elemen, satukan jadi sebuah array
     let arrSaldo = [kasAwal, totalAngsuran, tabunganSukarelaIn, tabunganBerencanaIn, simpananWajib, infaq, kartuAngsuran, bukuTabungan, tambalSulam, totalAdmin, asuransi, dropingRp, tabunganSukarelaOut, tabunganBerencanaOut, pengunduranDiriRp];
 
@@ -103,7 +104,7 @@ function hitungSaldo(){
 
 function hitungKartu(){
     var kartu = $('input[name="ka"]').val();
-    var pf = parseInt(kartu) / 1000;
+    var pf = parseInt(kartu.replace('.','')) / 1000;
     if(!isNaN(pf)){
         $('input[name="rtpf"]').val(pf);
     }else{
@@ -113,7 +114,7 @@ function hitungKartu(){
 
 function tambalSulam(){
     var sulam = $('input[name="tsulamrp"]').val();
-    var tambalPf = parseInt(sulam) / 20000;
+    var tambalPf = parseInt(sulam.replace('.','')) / 20000;
     if(!isNaN(tambalPf)){
         $('input[name="tspf"]').val(tambalPf);
     }else{

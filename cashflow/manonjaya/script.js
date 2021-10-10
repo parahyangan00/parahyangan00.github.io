@@ -103,7 +103,7 @@ function hitungSaldo(){
 
 function hitungKartu(){
     var kartu = $('input[name="ka"]').val();
-    var pf = parseInt(kartu) / 1000;
+    var pf = parseInt(kartu.replace('.','')) / 1000;
     if(!isNaN(pf)){
         $('input[name="rtpf"]').val(pf);
     }else{
@@ -113,7 +113,7 @@ function hitungKartu(){
 
 function tambalSulam(){
     var sulam = $('input[name="tsulamrp"]').val();
-    var tambalPf = parseInt(sulam) / 20000;
+    var tambalPf = parseInt(sulam.replace('.','')) / 20000;
     if(!isNaN(tambalPf)){
         $('input[name="tspf"]').val(tambalPf);
     }else{

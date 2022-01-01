@@ -32,7 +32,7 @@
                         </div>
                         <div class="inputBox1">
                             <label for="">Nama Anggota</label>
-                            <input type="text" name="namaAnggota" id="majelis" required>
+                            <input type="text" name="namaAnggota" id="namaAnggota" required>
                         </div>
                         <div class="inputBox1">
                             <label for="">Majelis</label>
@@ -98,7 +98,10 @@
                                     // myAlert.classList.toggle('d-none');
                                     alert('data berhasil di input');
                                     // reset formnya
-                                    form.reset();
+                                    // form.reset();
+                                    // form.reset();
+                                    document.getElementById('namaAnggota').value = ""
+
                                     console.log('Success!', response);
                                 })
                                 .catch((error) => console.error('Error!', error.message));

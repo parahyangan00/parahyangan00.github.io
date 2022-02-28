@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-900">
+    <div class="">
+        <div>
+            <h2 class="text-center text-indigo-500 hover:text-indigo-50 text-xl font-semibold my-3">Form Kas Kecil</h2>
+        </div>
+        <form action="#" name="form-kas-kecil">
+            <div class="grid grid-cols-2 mx-8">
+                <label for="tanggal" class="text-slate-50 self-center text-center mr-10 text-lg">Tanggal</label>
+                <input type="date" name="tanggal"
+                    class="p-2 text-slate-900 my-4 rounded-sm outline-none focus:border-2 focus:border-solid focus:border-indigo-500">
+            </div>
+            <div class="grid grid-cols-2 mx-8">
+                <label for="tanggal" class="text-slate-50 self-center text-center mr-10 text-lg">Deskripsi</label>
+                <input type="text" name="deskripsi"
+                    class="p-2 text-slate-900 my-4 rounded-sm outline-none focus:border-2 focus:border-solid focus:border-indigo-500">
+            </div>
+            <div class="grid grid-cols-2 mx-8">
+                <label for="tanggal" class="text-slate-50 self-center text-center mr-10 text-lg">Nominal</label>
+                <input type="text" name="nominal"
+                    class="p-2 text-slate-900 my-4 rounded-sm outline-none focus:border-2 focus:border-solid focus:border-indigo-500">
+            </div>
+            <div class="grid grid-cols-2 mx-8 mt-3">
+                <button type="submit"
+                    class="col-start-2 bg-indigo-500 hover:bg-indigo-400 hover:scale-110 transition-all duration-300 rounded p-2 text-indigo-50">Proses</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        const scriptURL =
+            'https://script.google.com/macros/s/AKfycbxa9hhyQr4V6veWMr5TTPK28yn0GybZTe9b8kcrWXa_fpSDF7X9L-Edl4REKZo6hPdAqw/exec'
+        const form = document.forms['form-kas-kecil']
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            // ketika tombol submit diklik
+            // tampilkan tombol loading, hilangkan tombol kirim
+            fetch(scriptURL, {
+                    method: 'POST',
+                    body: new FormData(form)
+                })
+                .then(response => {
+                    // tampilkan tombol kirim, hilangkan tombol loading
+                    // tampilkan alert
+                    alert('Alhamdulillah Berhasil gesss')
+                    // reset formnya
+                    form.reset();
+                    console.log('Success!', response)
+                })
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+</body>
+
+</html>

@@ -45,6 +45,7 @@
         <!-- button -->
         <button id="cashflow">Cashflow</button>
         <button id="los">Los Angsuran</button>
+        <button id="kas-kecil">Kas Kecil</button>
 
         <div class="wave wave1"></div>
         <div class="wave wave2"></div>
@@ -81,6 +82,7 @@
         // selector
         const btnCashflow = document.querySelector('#cashflow');
         const btnLos = document.querySelector('#los');
+        const btnKasKecil = document.querySelector('#kas-kecil');
 
         // pengkondisian
         btnCashflow.addEventListener('click', function () {
@@ -88,6 +90,9 @@
         });
         btnLos.addEventListener('click', function () {
             window.location.href = 'los/index4.html'
+        });
+        btnKasKecil.addEventListener('click', () => {
+            window.location.href = 'cashflow/sukaraja/kas kecil/index.html'
         });
     </script>
     <script type="text/javascript">

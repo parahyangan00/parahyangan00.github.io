@@ -1,0 +1,131 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Cek Transaksi Cashflow Petugas</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="text-center my-3">Cek Transaksi Cashflow Petugas</h2>
+        <div class="row col-lg-4">
+            <div class="input-group mb-3" id="cek-petugas">
+                <select class="form-select" id="pilih-petugas">
+                </select>
+            </div>
+            <div class="input-group mb-3">
+                <input type="date" name="tanggal-pelayanan" id="tanggal-pelayanan" placeholder="dd/mm/yyyy"
+                    class="form-select">
+            </div>
+            <div class="input-group mb-3">
+                <button class="btn btn-primary" id="btn-cek-transaksi">Cek Transaksi</button>
+            </div>
+        </div>
+        <div class="overflow-auto">
+            <table class="table table-bordered border-info">
+                <thead>
+                    <tr style="font-size: 12px;" class="table-info text-center">
+                        <th scope="col">No</th>
+                        <th scope="col">Majelis</th>
+                        <th scope="col">Kas Awal</th>
+                        <th scope="col">Angsuran Ikhtiar</th>
+                        <th scope="col">Angsuran Individu</th>
+                        <th scope="col">Total Angsuran</th>
+                        <th scope="col">Sukarela in</th>
+                        <th scope="col">Berencana in</th>
+                        <th scope="col">Simwa</th>
+                        <th scope="col">Inpaq</th>
+                        <th scope="col">Reg Taber</th>
+                        <th scope="col">Buku Tabungan</th>
+                        <th scope="col">Tambal Sulam</th>
+                        <th scope="col">Biaya Admin</th>
+                        <th scope="col">Dana Kegiatan</th>
+                        <th scope="col">Total Admin</th>
+                        <th scope="col">Asuransi</th>
+                        <th scope="col">Droping (RP)</th>
+                        <th scope="col">Droping(PF)</th>
+                        <th scope="col">Penarikan Sukarela</th>
+                        <th scope="col">Pencairan Taber</th>
+                        <th scope="col">Pengunduran Diri</th>
+                        <th scope="col">Saldo</th>
+                        <th scope="col">Anggota Keluar(PF)</th>
+                        <th scope="col">Tambal Sulam (PF)</th>
+                        <th scope="col">Regis Taber (PF)</th>
+                    </tr>
+                </thead>
+                <tbody id="list-cek-transaksi">
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <script src="/cashflow/manonjaya/script.js"></script>
+    <script>
+        const pilihpetugas = document.querySelector('#pilih-petugas');
+        const tglPelayanan = document.querySelector('#tanggal-pelayanan');
+        const btnCek = document.querySelector('#btn-cek-transaksi');
+        const listCekTransaksi = document.querySelector('#list-cek-transaksi');
+        document.addEventListener('DOMContentLoaded', function () {
+            petugas.forEach(p => {
+                let selekpetugas = `<option value="${p}">${p}</option>`
+                pilihpetugas.insertAdjacentHTML('beforeend', selekpetugas);
+            });
+        });
+
+        btnCek.addEventListener('click', function () {
+            listCekTransaksi.innerHTML = ""
+            let x = tglPelayanan.value
+            let i = 1
+            fetch(
+                    `https://sheet.best/api/sheets/b6c091b0-f40a-46e2-aa68-e7a0c624f8b2/query?petugas=*${pilihpetugas.value}*&tpelayanan=*${x}*`
+                )
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(d => {
+                        let listcek = `<tr style="font-size: 12px;">
+                        <th scope="row">${i++}</th>
+                        <td>${d.nmajelis}</td>
+                        <td>${d.mkasawal}</td>
+                        <td>${d.angikhtiar}</td>
+                        <td>${d.angindividu}</td>
+                        <td>${d.tangsuran}</td>
+                        <td>${d.tsukarela}</td>
+                        <td>${d.tberencana}</td>
+                        <td>${d.swajib}</td>
+                        <td>${d.infaq}</td>
+                        <td>${d.ka}</td>
+                        <td>${d.bt}</td>
+                        <td>${d.tsulamrp}</td>
+                        <td>${d.adm}</td>
+                        <td>${d.kegiatan}</td>
+                        <td>${d.tadm}</td>
+                        <td>${d.asuransi}</td>
+                        <td>${d.dropingrp}</td>
+                        <td>${d.dropingpf}</td>
+                        <td>${d.pensukarela}</td>
+                        <td>${d.penberencana}</td>
+                        <td>${d.pengundurandiri}</td>
+                        <td>${d.saldo}</td>
+                        <td>${d.akpf}</td>
+                        <td>${d.tspf}</td>
+                        <td>${d.rtpf}</td>
+                        
+                    </tr>`
+                        listCekTransaksi.insertAdjacentHTML('beforeend', listcek);
+                    });
+                })
+        });
+    </script>
+</body>
+
+</html>

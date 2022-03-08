@@ -44,6 +44,7 @@
         <h3 class="slogan">silih asah silih asuh silih asih silih asaan</h3>
         <button id="cashflow">Cashflow</button>
         <button id="los">Los Angsuran</button>
+        <button id="cek">Cek Hasil</button>
 
         <div class="wave wave1"></div>
         <div class="wave wave2"></div>
@@ -80,6 +81,7 @@
         // selector
         const btnCashflow = document.querySelector('#cashflow');
         const btnLos = document.querySelector('#los');
+        const btnCek = document.querySelector('#cek');
 
         // pengkondisian
         btnCashflow.addEventListener('click', function () {
@@ -87,6 +89,10 @@
         });
         btnLos.addEventListener('click', function () {
             window.location.href = 'los/index6.html'
+        });
+
+        btnCek.addEventListener('click', function () {
+            window.location.href = 'cashflow/manonjaya/filter.html'
         });
     </script>
     <script type="text/javascript">

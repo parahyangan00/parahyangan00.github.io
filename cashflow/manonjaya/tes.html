@@ -1,0 +1,37 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug</title>
+</head>
+
+<body>
+    <div class="container">
+
+    </div>
+
+
+    <script>
+        const container = document.querySelector('.container')
+        const url = "https://docs.google.com/spreadsheets/d/"
+        const ssid = "1dgPoZnVgr9ve_c6ufrwBNMK_yr0nyo1C6LyaK7mmIHc"
+        const query1 = "/gviz/tq?"
+
+        const endpoint1 = `${url}${ssid}${query1}`
+        fetch(endpoint1)
+            .then(response => response.text())
+            .then(data => {
+                const temp = data.substring(47).slice(0, -2)
+                const json = JSON.parse(temp)
+                const baris = json.table.rows
+                baris.forEach(row => {
+                    const temp1 = row.c
+                    console.log(temp1)
+                });
+            })
+    </script>
+</body>
+
+</html>

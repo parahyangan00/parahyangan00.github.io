@@ -26,6 +26,11 @@
                 <button class="btn btn-primary" id="btn-cek-transaksi">Cek Transaksi</button>
             </div>
         </div>
+        <div class="alert-kosong d-none">
+            <div class="alert alert-danger" role="alert">
+                Ditanggal ini anda belum input cashflow
+            </div>
+        </div>
         <div class="overflow-auto">
             <table class="table table-bordered border-info">
                 <thead>
@@ -60,10 +65,7 @@
                 </thead>
                 <tbody id="list-cek-transaksi">
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <td></td>
-                    </tr>
+                <tfoot id="list-footer">
                 </tfoot>
             </table>
         </div>
@@ -75,6 +77,8 @@
         const tglPelayanan = document.querySelector('#tanggal-pelayanan');
         const btnCek = document.querySelector('#btn-cek-transaksi');
         const listCekTransaksi = document.querySelector('#list-cek-transaksi');
+        const listFooter = document.querySelector('#list-footer');
+        const alertKosong = document.querySelector('.alert-kosong');
         document.addEventListener('DOMContentLoaded', function () {
             petugas.forEach(p => {
                 let selekpetugas = `<option value="${p}">${p}</option>`
@@ -84,6 +88,7 @@
 
         btnCek.addEventListener('click', function () {
             listCekTransaksi.innerHTML = ""
+            let sum = 0;
             let x = tglPelayanan.value
             let i = 1
             fetch(
@@ -91,39 +96,76 @@
                 )
                 .then(response => response.json())
                 .then(data => {
-                    data.forEach(d => {
-                        let listcek = `<tr style="font-size: 12px;">
-                        <th scope="row">${i++}</th>
-                        <td>${d.nmajelis}</td>
-                        <td>${d.mkasawal}</td>
-                        <td>${d.angikhtiar}</td>
-                        <td>${d.angindividu}</td>
-                        <td>${d.tangsuran}</td>
-                        <td>${d.tsukarela}</td>
-                        <td>${d.tberencana}</td>
-                        <td>${d.swajib}</td>
-                        <td>${d.infaq}</td>
-                        <td>${d.ka}</td>
-                        <td>${d.bt}</td>
-                        <td>${d.tsulamrp}</td>
-                        <td>${d.adm}</td>
-                        <td>${d.kegiatan}</td>
-                        <td>${d.tadm}</td>
-                        <td>${d.asuransi}</td>
-                        <td>${d.dropingrp}</td>
-                        <td>${d.dropingpf}</td>
-                        <td>${d.pensukarela}</td>
-                        <td>${d.penberencana}</td>
-                        <td>${d.pengundurandiri}</td>
-                        <td>${d.saldo}</td>
-                        <td>${d.akpf}</td>
-                        <td>${d.tspf}</td>
-                        <td>${d.rtpf}</td>
-                        
-                    </tr>`
-                        listCekTransaksi.insertAdjacentHTML('beforeend', listcek);
-                    });
+                    if (data.length > 0) {
+                        data.forEach(d => {
+                            alertKosong.classList.toggle('d-none')
+                            let listcek = `<tr style="font-size: 12px;">
+                                <th scope="row">${i++}</th>
+                                <td>${d.nmajelis}</td>
+                                <td>${d.mkasawal}</td>
+                                <td>${d.angikhtiar}</td>
+                                <td>${d.angindividu}</td>
+                                <td>${d.tangsuran}</td>
+                                <td>${d.tsukarela}</td>
+                                <td>${d.tberencana}</td>
+                                <td>${d.swajib}</td>
+                                <td>${d.infaq}</td>
+                                <td>${d.ka}</td>
+                                <td>${d.bt}</td>
+                                <td>${d.tsulamrp}</td>
+                                <td>${d.adm}</td>
+                                <td>${d.kegiatan}</td>
+                                <td>${d.tadm}</td>
+                                <td>${d.asuransi}</td>
+                                <td>${d.dropingrp}</td>
+                                <td>${d.dropingpf}</td>
+                                <td>${d.pensukarela}</td>
+                                <td>${d.penberencana}</td>
+                                <td>${d.pengundurandiri}</td>
+                                <td>${d.saldo}</td>
+                                <td>${d.akpf}</td>
+                                <td>${d.tspf}</td>
+                                <td>${d.rtpf}</td>
+                                
+                            </tr>`;
+                        });
+                    } else {
+                        alertKosong.classList.toggle('d-none')
+                    }
                 })
+            // sum += Number(data.saldo.split(".").join(""))
+            // listCekTransaksi.insertAdjacentHTML('beforeend', listcek);
+            // let listfoot = `<tr style="font-size: 12px; font-weight: bold; color: #4338ca; background-color: #e0e7ff;"
+            //             class="text-center">
+            //             <td colspan="2">Grand Total</td>
+            //             <td>${sum}</td>
+            //             <td></td>
+            //             <td></td>
+            //             <td></td>
+            //             <td></td>
+            //             <td></td>
+            //             <td></td>
+            //             <td></td>
+            //             <td></td>
+            //             <td></td>
+            //             <td></td>
+            //             <td></td>
+            //             <td></td>
+            //             <td></td>
+            //             <td></td>
+            //             <td></td>
+            //             <td></td>
+            //             <td></td>
+            //             <td></td>
+            //             <td></td>
+            //             <td></td>
+            //             <td></td>
+            //             <td></td>
+            //             <td></td>
+            //         </tr>`
+            // listFooter.insertAdjacentHTML('beforeend', listfoot)
+            // sum += Number(data.saldo.split(".").join(""))
+
         });
     </script>
 </body>

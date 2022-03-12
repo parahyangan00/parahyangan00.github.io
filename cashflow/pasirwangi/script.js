@@ -4,15 +4,22 @@
     const btnKirim = document.querySelector('.btn-kirim');
     const btnLoading = document.querySelector('.btn-loading');
     const myAlert = document.querySelector('.my-alert');
-     
-       form.addEventListener('submit', e => {
-         e.preventDefault();
+    const selekPetugas = document.querySelector('#selek-petugas');
+    const petugas = ["-","Ajeng Siti Zakiah","Agit Pratama Putra","Mela Ulfasari","Resna Apriliyani","Silvi Adawiyah","Rizal Fathoni","Rizki Destian","Sulaeman Afif","Idrus Ismail"]
+
+    petugas.forEach(p => {
+        let list =`<option value="${p}">${p}</option>`
+        selekPetugas.insertAdjacentHTML('beforeend', list)
+    });
+
+    form.addEventListener('submit', e => {
+            e.preventDefault();
          // ketika tombol submit diklik
             // tampilkan tombol loading, hilangkan tombol kirim
             btnLoading.classList.toggle('d-none');
             btnKirim.classList.toggle('d-none');
-         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-         .then((response) => {
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then((response) => {
                 // tampilkan tombol kirim, hilangkan tombol loading
                 btnLoading.classList.toggle('d-none');
                 btnKirim.classList.toggle('d-none');
@@ -21,9 +28,9 @@
                 // reset formnya
                 form.reset();
                 console.log('Success!', response);
-              })
-              .catch((error) => console.error('Error!', error.message));
-          });
+                })
+                .catch((error) => console.error('Error!', error.message));
+        });
 
 
 function hitungTotal(){
@@ -132,9 +139,9 @@ rupiah.addEventListener('keyup', function (e) {
 /* Fungsi formatRupiah */
 var rupiah = document.querySelectorAll('.inputBox input[type="text"]');
 rupiah.forEach(function(el) {
-  el.addEventListener('keyup', function (e) {
+    el.addEventListener('keyup', function (e) {
     el.value = formatRupiah(this.value, '');
-  });
+    });
 });
 
 /* Fungsi formatRupiah yang lama*/

@@ -71,7 +71,7 @@
         </div>
     </div>
 
-    <script src="/cashflow/manonjaya/script.js"></script>
+    <script src="/cashflow/pasirwangi/script.js"></script>
     <script>
         const pilihpetugas = document.querySelector('#pilih-petugas');
         const tglPelayanan = document.querySelector('#tanggal-pelayanan');
@@ -92,7 +92,7 @@
             let x = tglPelayanan.value
             let i = 1
             fetch(
-                    `https://sheet.best/api/sheets/b6c091b0-f40a-46e2-aa68-e7a0c624f8b2/query?petugas=*${pilihpetugas.value}*&tpelayanan=*${x}*`
+                    `https://sheet.best/api/sheets/a32e7da1-eb7a-46e2-b82f-f67451a27f5b/query?petugas=*${pilihpetugas.value}*&tpelayanan=*${x}*`
                 )
                 .then(response => response.json())
                 .then(data => {
@@ -134,39 +134,6 @@
                         alertKosong.classList.toggle('d-none')
                     }
                 })
-            // sum += Number(data.saldo.split(".").join(""))
-            // listCekTransaksi.insertAdjacentHTML('beforeend', listcek);
-            // let listfoot = `<tr style="font-size: 12px; font-weight: bold; color: #4338ca; background-color: #e0e7ff;"
-            //             class="text-center">
-            //             <td colspan="2">Grand Total</td>
-            //             <td>${sum}</td>
-            //             <td></td>
-            //             <td></td>
-            //             <td></td>
-            //             <td></td>
-            //             <td></td>
-            //             <td></td>
-            //             <td></td>
-            //             <td></td>
-            //             <td></td>
-            //             <td></td>
-            //             <td></td>
-            //             <td></td>
-            //             <td></td>
-            //             <td></td>
-            //             <td></td>
-            //             <td></td>
-            //             <td></td>
-            //             <td></td>
-            //             <td></td>
-            //             <td></td>
-            //             <td></td>
-            //             <td></td>
-            //             <td></td>
-            //         </tr>`
-            // listFooter.insertAdjacentHTML('beforeend', listfoot)
-            // sum += Number(data.saldo.split(".").join(""))
-
         });
     </script>
 </body>

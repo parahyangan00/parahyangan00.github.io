@@ -88,11 +88,12 @@
 
         btnCek.addEventListener('click', function () {
             listCekTransaksi.innerHTML = ""
+            const url = "https://sheet.best/api/sheets/2c211b88-09cb-4dc0-b09c-1e7cd37925dd";
             let sum = 0;
             let x = tglPelayanan.value
             let i = 1
             fetch(
-                    `https://sheet.best/api/sheets/a32e7da1-eb7a-46e2-b82f-f67451a27f5b/query?petugas=*${pilihpetugas.value}*&tpelayanan=*${x}*`
+                    `${url}/query?petugas=*${pilihpetugas.value}*&tpelayanan=*${x}*`
                 )
                 .then(response => response.json())
                 .then(data => {

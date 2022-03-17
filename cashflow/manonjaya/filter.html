@@ -87,12 +87,13 @@
         });
 
         btnCek.addEventListener('click', function () {
+            const url = "https://sheet.best/api/sheets/8d008044-6663-499e-8b03-7ec773f1f21c";
             listCekTransaksi.innerHTML = ""
             let sum = 0;
             let x = tglPelayanan.value
             let i = 1
             fetch(
-                    `https://sheet.best/api/sheets/b6c091b0-f40a-46e2-aa68-e7a0c624f8b2/query?petugas=*${pilihpetugas.value}*&tpelayanan=*${x}*`
+                    `${url}/query?petugas=*${pilihpetugas.value}*&tpelayanan=*${x}*`
                 )
                 .then(response => response.json())
                 .then(data => {

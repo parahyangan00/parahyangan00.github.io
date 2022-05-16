@@ -70,6 +70,7 @@ section {
 .form .inputBox input,
 .form .inputBox textarea,
 .form .inputBox1 input,
+.form .inputBox1 select,
 .form .inputBox select {
     width: 100%;
     border: none;

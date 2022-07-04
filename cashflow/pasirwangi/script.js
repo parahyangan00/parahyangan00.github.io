@@ -5,7 +5,7 @@
     const btnLoading = document.querySelector('.btn-loading');
     const myAlert = document.querySelector('.my-alert');
     const selekPetugas = document.querySelector('#selek-petugas');
-    const petugas = ["-","Ajeng Siti Zakiah","Agit Pratama Putra","Mela Ulfasari","Resna Apriliyani","Silvi Adawiyah","Rizal Fathoni","Rizki Destian","Sulaeman Afif","Idrus Ismail"]
+    const petugas = ["-","Ajeng Siti Zakiah","Agit Pratama Putra","Mela Ulfasari","Resna Apriliyani","Silvi Adawiyah","Rizal Fathoni","Wigena Hidayat","Ismail Soleh","Sulaeman Afif","Idrus Ismail"]
 
     petugas.forEach(p => {
         let list =`<option value="${p}">${p}</option>`

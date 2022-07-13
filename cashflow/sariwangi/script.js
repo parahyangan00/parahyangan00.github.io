@@ -1,5 +1,6 @@
 // script form to googlesheet
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbyoHFUmdgk6UqATF3C_qZw-z9ywmvUhuF7SYPNibECs2seHi9neKXupXUvEmcsxsHMqtw/exec'
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzqWc5gzLvLXnrO4wIhtPpeYK0m6Be6zE0mhJEgxeuO/dev'
+    // const scriptURL = 'https://script.google.com/macros/s/AKfycbyoHFUmdgk6UqATF3C_qZw-z9ywmvUhuF7SYPNibECs2seHi9neKXupXUvEmcsxsHMqtw/exec'
     const form = document.forms['cashflow-sariwangi'];
     const btnKirim = document.querySelector('.btn-kirim');
     const btnLoading = document.querySelector('.btn-loading');

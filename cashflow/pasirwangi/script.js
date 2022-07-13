@@ -24,7 +24,12 @@
                 btnLoading.classList.toggle('d-none');
                 btnKirim.classList.toggle('d-none');
                 // tampilkan alert
-                myAlert.classList.toggle('d-none');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Alhamdulillah',
+                    text: 'Datana tos lebet!',
+                  });
+                // myAlert.classList.toggle('d-none');
                 // reset formnya
                 form.reset();
                 console.log('Success!', response);
